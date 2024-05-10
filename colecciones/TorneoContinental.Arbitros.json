@@ -1,0 +1,10 @@
+[
+  {
+    "_id": {
+      "$oid": "663d925d810d8c280d04cd59"
+    },
+    "Certificacion": "Deberán contar con la certificación requerida",
+    "DecisionesFinales": "Su decisión será final e inapelable",
+    "RespetoArbitros": "Se velará por el respeto hacia los árbitros"
+  }
+]

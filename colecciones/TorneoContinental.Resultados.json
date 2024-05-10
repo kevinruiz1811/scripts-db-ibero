@@ -1,0 +1,10 @@
+[
+  {
+    "_id": {
+      "$oid": "663d91d2810d8c280d04cd56"
+    },
+    "RegistroResultados": "Se registrarán oficialmente los resultados",
+    "ElaboracionInformes": "Se elaborarán informes detallados de cada fase",
+    "GestionIncidentes": "Los informes de lesiones, incidentes o reclamaciones serán documentados"
+  }
+]

@@ -1,0 +1,10 @@
+[
+  {
+    "_id": {
+      "$oid": "663d9130810d8c280d04cd51"
+    },
+    "InscripcionDocumentacion": "Debe estar debidamente inscrito y contar con documentación",
+    "ControlesAntidopaje": "Se realizarán controles antidopaje",
+    "CodigoConducta": "Deberán respetar el código de conducta establecido"
+  }
+]

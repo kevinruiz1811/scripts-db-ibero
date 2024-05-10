@@ -1,0 +1,12 @@
+[
+  {
+    "_id": {
+      "$oid": "663d8969810d8c280d04cd4a"
+    },
+    "DuracionTorneo": "1 mes",
+    "EquiposParticipantes": "8",
+    "LugaresEncuentros": "Barrios",
+    "Reglamento": "Reglamento oficila del fútbol del barrio",
+    "Tipo": "Eliminación directa desde cuartos de final"
+  }
+]
