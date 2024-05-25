@@ -1,0 +1,82 @@
+MiTorneo = new ReplSetTest ({name: "MiTorneo", nodes: 3})
+MiTorneo.startSet()
+MiTorneo.initiate()
+
+fisrtconn = new Mongo("DESKTOP-G112JVE:20000")
+db = fisrtconn.getDB("TorneoContinental")
+db.isMaster()
+
+ARBITROS
+
+db.Arbitros.insert({
+    id_arbitro: 1,
+    nombre: "Ana Camargo",
+    pais: "Colombia"
+})
+
+db.Arbitros.insert({
+    id_arbitro: 2,
+    nombre: "Kevin Ruiz",
+    pais: "Canadá"
+})
+
+DEPORTISTAS
+
+db.Deportistas.insert({
+    id_deportista: 1,
+    nombre: "Vanessa Ruiz",
+    pais: "Estados unidos",
+    equipo: "Ultimate Team"
+})
+
+db.Deportistas.insert({
+    id_deportista: 2,
+    nombre: "Henry Arturo",
+    pais: "España",
+    equipo: "Team España"
+})
+
+db.Deportistas.insert({
+    id_deportista: 3,
+    nombre: "Kevin Ruiz",
+    pais: "Colombia",
+    equipo: "Team Colombia"
+})
+
+db.Arbitros.count()
+db.Arbitros.find().pretty()
+
+db.Deportistas.count()
+db.Deportistas.find().pretty()
+
+secondconn = new Mongo("DESKTOP-G112JVE:20001")
+dbN2 = secondconn.getDB("TorneoContinental")
+dbN2.isMaster()
+
+secondconn.setSecondaryOk()
+
+dbN2.Arbitros.count()
+dbN2.Deportistas.count()
+
+thirdconn = new Mongo("DESKTOP-G112JVE:20002")
+dbN3 = thirdconn.getDB("TorneoContinental")
+dbN3.isMaster()
+
+thirdconn.setSecondaryOk()
+
+dbN3.Arbitros.count()
+dbN3.Deportistas.count()
+
+
+-----------------
+
+fourthconn = new Mongo("DESKTOP-G112JVE:20000")
+dbMaster = fourthconn.getDB("TorneoContinental")
+dbMaster.isMaster()
+dbMaster.adminCommand({shutdown: 1})
+
+fiveconn = new Mongo("DESKTOP-G112JVE:20001")
+dbMaster2 = fiveconn.getDB("TorneoContinental")
+dbMaster2.isMaster()
+
+MiTorneo.stopSet()
