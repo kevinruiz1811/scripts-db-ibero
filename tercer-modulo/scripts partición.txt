@@ -1,0 +1,42 @@
+Primero se generará el cluster
+cluster = new ShardingTest({shards: 3, chuncksize: 1})
+
+Se conectará a la base de datos para insetar 2.200.000 registros
+db = (new Mongo("localhost:20006")).getDB("TorneoContinental")
+
+for(i = 0; i < 2200000; i++){
+ db.Deportistas.insert({deportista: "deportista" + i, Nombres: "Deportista No." + i, date: new Date()});
+}
+
+db.Deportistas.count()
+
+- Tercera terminal
+shard1 = new Mongo("localhost:20000")
+shardDB = shard1.getDB("TorneoContinental")
+shardDB.Deportistas.count()
+
+shard2 = new Mongo("localhost:20001")
+shard2DB = shard2.getDB("TorneoContinental")
+shard2DB.Deportistas.count()
+
+shard3 = new Mongo("localhost:20002")
+shard3DB = shard3.getDB("TorneoContinental")
+shard3DB.Deportistas.count()
+
+- Activar sharding
+- Segunda terminal
+shard1 = new Mongo("localhost:20006")
+sh.status()
+
+sh.enableSharding("TorneoContinental")
+db.Deportistas.ensureIndex({deportista: 1})
+sh.shardCollection("TorneoContinental.Deportistas", {deportista: 1})
+sh.status()
+
+- Activación del balanceador de carga
+sh.setBalancerState(true)
+sh.isBalancerRunning()
+
+- Se REVISA LA PARTICIÓN EN LOS DEMÁS NODOS
+- Consola inicial
+db.adminCommand({listShards: 1})
